@@ -18,16 +18,16 @@ module Math
     inputs do
       base :integer, :required
       exponent :integer, :required
-      llm_model Foobara::Ai::AnswerBot::Types.model_enum, default: "claude-3-7-sonnet-20250219"
+      llm_model :"Foobara::Ai::AnswerBot::model_enum", default: "claude-3-7-sonnet-20250219"
     end
 
     result :integer
   end
 end
 
-llm_model = "claude-3-7-sonnet-20250219"
-# llm_model = "gpt-3.5-turbo"
-# llm_model = "deepseek-r1:32b"
+# llm_model = "claude-3-7-sonnet-20250219"
+llm_model = "gpt-3.5-turbo"
+# llm_model = "o4-mini"
 
 base = 2
 exponent = 4

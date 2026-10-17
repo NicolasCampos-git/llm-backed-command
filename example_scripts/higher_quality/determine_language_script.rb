@@ -19,7 +19,7 @@ class DetermineLanguage < Foobara::LlmBackedCommand
 
   inputs do
     code_snippet :string, :required, "The code snippet you'd like to determine the language of"
-    llm_model Foobara::Ai::AnswerBot::Types.model_enum, default: "claude-3-7-sonnet-20250219"
+    llm_model :"Foobara::Ai::AnswerBot::model_enum", default: "claude-3-7-sonnet-20250219"
   end
 
   result do
@@ -33,9 +33,9 @@ class DetermineLanguage < Foobara::LlmBackedCommand
   end
 end
 
-llm_model = "claude-3-7-sonnet-20250219"
+# llm_model = "claude-3-7-sonnet-20250219"
 # llm_model = "gpt-3.5-turbo"
-# llm_model = "deepseek-r1:32b"
+llm_model = "qwen3.8:27b"
 
 code_snippet = "puts 'Hello, World'"
 

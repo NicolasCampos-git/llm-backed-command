@@ -2,6 +2,9 @@
 
 require "bundler/setup"
 
+require "pry"
+require "pry-byebug"
+
 # add your keys/urls to .env or set them some other way and delete these two lines
 require "foobara/load_dotenv"
 Foobara::LoadDotenv.run!(dir: __dir__)
@@ -50,7 +53,7 @@ class AnalyzeSentence < Foobara::LlmBackedCommand
 
   inputs do
     sentence :string, :required, "The sentence to extract and analyze verbs from"
-    llm_model Foobara::Ai::AnswerBot::Types.model_enum, default: "claude-3-7-sonnet-20250219"
+    llm_model "Foobara::Ai::AnswerBot::model_enum", default: "claude-3-7-sonnet-20250219"
   end
 
   result AnalyzedSentence
@@ -58,10 +61,9 @@ end
 
 # require "pry"
 # require "pry-byebug"
-
-llm_model = "claude-3-7-sonnet-20250219"
+# llm_model = "claude-3-7-sonnet-20250219"
 # llm_model = "gpt-3.5-turbo"
-# llm_model = "deepseek-r1:32b"
+llm_model = "o4-mini"
 
 sentence = "El autor de este script quierre mostrarte estos comandos"
 
@@ -78,3 +80,12 @@ verb = analyzed_sentence.verbs.first
 
 puts "The first verb class is: #{verb.class}"
 puts "and its uninflected form is: #{verb.uninflected}"
+puts "its direct object is: #{verb.direct_object}"
+puts "its indirect object is: #{verb.indirect_object}"
+
+verb = analyzed_sentence.verbs.last
+
+puts "The last verb class is: #{verb.class}"
+puts "and its uninflected form is: #{verb.uninflected}"
+puts "its direct object is: #{verb.direct_object}"
+puts "its indirect object is: #{verb.indirect_object}"
