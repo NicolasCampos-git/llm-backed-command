@@ -11,7 +11,7 @@ Foobara::RemoteImports::ImportCommand.run!(
   cache: true
 )
 
-require "foobara/anthropic_api"
+# require "foobara/anthropic_api"
 require "foobara/open_ai_api"
 require "foobara/ollama_api"
 

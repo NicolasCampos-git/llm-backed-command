@@ -4,7 +4,7 @@ require "foobara/load_dotenv"
 
 Foobara::LoadDotenv.run!(env: "development", dir: __dir__)
 
-require "foobara/anthropic_api"
+# require "foobara/anthropic_api"
 require "foobara/open_ai_api"
 require "foobara/ollama_api"
 
@@ -55,7 +55,7 @@ class SelectUsStateNamesAndCorrectTheirSpelling < Foobara::LlmBackedCommand
 
   inputs do
     list_of_possible_us_states [PossibleUsState], :required
-    llm_model Foobara::Ai::AnswerBot::Types.model_enum, default: "claude-3-7-sonnet-20250219"
+    llm_model :"Foobara::Ai::AnswerBot::model_enum", default: "gpt-3.5-turbo"
   end
 
   result SelectedAndCorrectedUsStateNames
@@ -71,6 +71,7 @@ list_of_possible_us_states = [
   PossibleUsState.new(name: "Los Angeles"),
   PossibleUsState.new(name: "New York")
 ]
+
 # llm_model = "gpt-3.5-turbo"
 
 puts "Considering:"

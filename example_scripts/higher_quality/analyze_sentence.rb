@@ -53,7 +53,7 @@ class AnalyzeSentence < Foobara::LlmBackedCommand
 
   inputs do
     sentence :string, :required, "The sentence to extract and analyze verbs from"
-    llm_model "Foobara::Ai::AnswerBot::model_enum", default: "claude-3-7-sonnet-20250219"
+    llm_model :"Foobara::Ai::AnswerBot::model_enum", default: "claude-3-7-sonnet-20250219"
   end
 
   result AnalyzedSentence

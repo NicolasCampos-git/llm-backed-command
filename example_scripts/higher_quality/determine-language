@@ -3,7 +3,7 @@
 require "foobara/load_dotenv"
 Foobara::LoadDotenv.run!(dir: __dir__)
 
-require "foobara/anthropic_api"
+# require "foobara/anthropic_api"
 require "foobara/open_ai_api"
 # require "foobara/ollama_api"
 
@@ -15,7 +15,7 @@ class DetermineLanguage < Foobara::LlmBackedCommand
 
   inputs do
     code_snippet :string, :required, "The code snippet you'd like to determine the language of"
-    llm_model "AnswerBot::model_enum", default: Foobara::Ai.default_llm_model
+    llm_model :"Foobara::Ai::AnswerBot::model_enum", default: "gpt-3.5-turbo"
   end
 
   result do

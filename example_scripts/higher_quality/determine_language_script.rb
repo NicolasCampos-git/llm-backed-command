@@ -3,14 +3,15 @@
 # ENV["ANTHROPIC_API_KEY"] = "<your key here>"
 # ENV["OPENAI_API_KEY"] = "<your key here>"
 # ENV["OLLAMA_API_URL"] = "<your url here>"
+# ENV[OLLAMA_API_KEY] = "<your key here>"
 
 # if using .env like this instead of setting ENV then run `gem install foobara-dotenv-loader`
 require "foobara/load_dotenv"
 Foobara::LoadDotenv.run!(dir: __dir__)
 
-require "foobara/anthropic_api"
-require "foobara/open_ai_api"
-require "foobara/ollama_api"
+require "foobara/anthropic_api" if ENV.key?("ANTHROPIC_API_KEY")
+require "foobara/open_ai_api" if ENV.key?("OPENAI_API_KEY")
+require "foobara/ollama_api" if ENV.key?("OLLAMA_API_URL")
 
 require "foobara/llm_backed_command"
 
@@ -34,8 +35,8 @@ class DetermineLanguage < Foobara::LlmBackedCommand
 end
 
 # llm_model = "claude-3-7-sonnet-20250219"
-# llm_model = "gpt-3.5-turbo"
-llm_model = "qwen3.8:27b"
+llm_model = "gpt-3.5-turbo"
+# llm_model = "qwen3.8:27b"
 
 code_snippet = "puts 'Hello, World'"
 
